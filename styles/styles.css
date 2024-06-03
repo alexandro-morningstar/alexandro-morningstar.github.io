@@ -1,0 +1,513 @@
+/* General */
+
+* { /*Reset a la pagina*/
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    padding: 10px 100px 10px 100px; /*Definimos todos los margenes de las secciones, para reajustar solo el contenido*/
+}
+
+/* Nav-Bar */
+nav {
+    position: fixed; /*Se quedará en su lugar aunque se scrollee*/
+    /*Indicamos que inicie al "inicio" de todo con respecto a su seccion "nav"*/
+    right: 0; 
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 10px 20px;
+    height: 20px;
+}
+
+#bar-items {
+    width: 100%; /*Buscará ocupar todo lo ancho de la pantalla*/
+    display: grid; /*Los items dentro de todo el id="bar-items" van a mostrarse en un grid*/
+    grid-template-columns: 100px 1fr 100px; /*Las tres columnas tendrán un tamaño dinámico*/
+}
+
+.bar-item {
+    display: flex; /*Cada elemento bar-item, dentro de su casilla se va a desplegar con flex*/
+    align-items: center; /*Para alinear el contenido al centro*/
+}
+
+#bar-items #main-menu-icon {
+    grid-column: 1/2;
+    justify-self: left;
+    font-family: "Overpass Mono", monospace;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#bar-items #nav-bar-cite {
+    grid-column: 2/3;
+    justify-self: center;
+    font-family: "Overpass Mono", monospace;
+    font-weight: 150;
+    font-size: 10px;
+}
+
+#bar-items #services{
+    grid-column: 3/4;
+    justify-self: end;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#bar-items .bar-item .white-to-black, #footer-items .footer-item .white-to-black { /*Texto en blanco para que no se vea en fondo negro // Afecta tanto a navbar como a footer*/
+    color: white;
+}
+
+#bar-items .bar-item .black-to-white:hover, #footer-items .footer-item .black-to-white:hover { /*Texto en negro para que cambie a blanco al pasar el cursor*/
+    color: white;
+    transition-duration: 1s;
+}
+/* Banner section */
+#banner-section {
+    background-color: white;
+    padding: 18% 0%;
+    display: flex; /*Elementos sueltos dentro de una sección o div, que quiero se recorran horizontalmente a la derecha*/
+    flex-direction: row; /*Se orienta (apila) en filas, no en columnas*/
+    flex-wrap: wrap; /*Al llegar al limite, salta a la siguiente fila*/
+    align-items: center; /*Alinea en el eje y el contenido para que este a la misma algura*/
+    justify-content: center; /*el contenido lo lleva al centro de la pantalla sobre el eje x*/
+    gap: 30px;
+}
+
+#banner-section img {
+    max-width: 500px;
+}
+
+#banner-section h2 {
+    font-family: "Overpass Mono", monospace;
+    font-weight: 400;
+    font-size: 60px;
+}
+
+.blinking_cursor::after{ /*animación para cursor parpadeante con pseudo elemento ::after para agregar algo al final de todo lo que sea clase .blinking_cursor*/
+    content: '_';
+    animation: blink 1.5s infinite; /*blink (parpadeo) de 1.5s infinito*/
+}
+
+@media (max-width: 980px) { /*Banner para pantallas pequeñas*/
+    
+#banner-section {
+    background-color: white;
+    padding: 17% 0%;
+    display: flex; /*Elementos sueltos dentro de una sección o div, que quiero se recorran horizontalmente a la derecha*/
+    flex-direction: column; /*Se orienta (apila) en filas, no en columnas*/
+    flex-wrap: wrap; /*Al llegar al limite, salta a la siguiente fila*/
+    align-items: center; /*Alinea en el eje y el contenido para que este a la misma algura*/
+    justify-content: center; /*el contenido lo lleva al centro de la pantalla sobre el eje x*/
+    gap: 30px;
+    border: 1px solid black;
+}
+
+#banner-section img {
+    max-width: 500px;
+}
+
+#banner-section h2 {
+    font-family: "Overpass Mono", monospace;
+    font-weight: 400;
+    font-size: 60px;
+}
+
+.blinking_cursor::after{ /*animación para cursor parpadeante con pseudo elemento ::after para agregar algo al final de todo lo que sea clase .blinking_cursor*/
+    content: '_';
+    animation: blink 1.5s infinite; /*blink (parpadeo) de 1.5s infinito*/
+}
+}
+
+@keyframes blink { /*identificador blink definido arriba*/
+    0%, 50% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Services section */
+#services-menu {
+    padding: 18% 2% 18% 2%;
+    background-color: black;
+    color: white;
+}
+
+#services-menu a{
+    color: white;
+}
+
+#services-menu .service {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 25px;
+    padding-top: 25px;
+    border-bottom: 1px solid white;
+}
+
+@media (max-width: 1440px) { /*Si la pantalla disminuye de esta resolución, toda la linea inferior del grid se vuelve dinamica 1fr*/
+    #services-menu .service {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding-top: 25px;
+        border-bottom: 1px solid white;
+    }
+}
+
+#services-menu .service h2 {
+    font-family: "Overpass Mono", monospace;
+    font-weight: 500;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+#services-menu .service .service-title { /*Posicionamiento de elementos dentro de service en la tabla de grid*/
+    grid-column: 1/3;
+    grid-row: 1;
+}
+
+#services-menu .service .service-tools {
+    grid-column: 1/2;
+    grid-row: 2;
+}
+
+#services-menu .service .service-activities {
+    grid-column: 2/3;
+    grid-row: 2;
+    justify-self: right;
+}
+
+#services-menu .service .service-icon {
+    grid-column: 3/4;
+    grid-row: 2;
+    justify-self: right;
+    padding-right: 20px;
+}
+
+#services-menu #cybersecurity #terminal { /*Formato de color para spans en el id="cybersecurity"*/
+    color: #257DF9;
+}
+
+#services-menu .service #command {
+    color: #50AD8D;
+}
+
+#services-menu #web-dev .definition { /*Formato de color principalmente para #services-menu #web-dev pero tambien afecta a la cita del banner*/
+    color: #569CD6;
+}
+
+#services-menu #web-dev .function {
+    color: #DCDCAA;
+}
+
+#services-menu #web-dev .dot{
+    color: #D4D4D4;
+}
+
+#services-menu #web-dev .yellow-parenthesis {
+    color: #FFB100;
+}
+
+#services-menu #web-dev .variable {
+    color: #9CDCFE;
+}
+
+#services-menu #web-dev .plain-text {
+    color: #C7702E;
+}
+
+#services-menu #web-dev .pink-parenthesis{
+    color: #D13F5C;
+}
+
+/* vuln section */
+#vuln {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    padding: 0% 0% 17% 0%;
+    /* padding-top: 90px;
+    padding-bottom: 90px; */
+}
+
+#vuln #vuln-banner {
+    background-image: url(../images/hacker.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 528px;
+    display: flex; /*Habilitamos flexbox para centrar el H2*/
+    justify-content: center; /**/
+    align-items: center; /**/
+}
+
+.service-section-header { /*Afecta a todos los headers dentro de los banners de cada sección de servicios*/
+    font-family: "Overpass Mono", monospace;
+    font-weight: 300;
+    font-size: 100px;
+}
+
+.service-description { /*Afecta a todos los bloques grid de cada servicio*/
+    padding: 45px 100px;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 388px 1fr; /* 388px */
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+#vuln .cibersecurity {
+    display: flex;
+    align-items: center;
+}
+
+#vuln #vuln-description h3{
+    font-family: "Overpass Mono", monospace;
+    font-weight: 300;
+    font-size: 30px;
+}
+
+#vuln #vuln-description img {
+    max-width: 388px;
+    border-radius: 10px;
+}
+
+.table-image-1 {grid-column: 1/2; grid-row: 1/3;} /*Ubicaciones en el grid para todas las secciones de servicios*/
+
+.table-header-1 {grid-column: 2/3; grid-row: 1/2;}
+
+.table-description-1 {grid-column: 2/3; grid-row: 2/3;}
+
+.table-image-2 {grid-column: 1/2; grid-row: 3/5;}
+
+.table-header-2 {grid-column: 2/3; grid-row: 3/4;}
+
+.table-description-2 {grid-column: 2/3; grid-row: 4/5;}
+
+.table-image-3 {grid-column: 1/2; grid-row: 5/7;}
+
+.table-header-3 {grid-column: 2/3; grid-row: 5/6;}
+
+.table-description-3 {grid-column: 2/3; grid-row: 6/7;}
+
+
+
+
+/*------------------temp --------------------------------------*/
+
+/* network section */
+#network {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    padding: 0% 0% 17% 0%;
+}
+
+#network #network-banner {
+    background-image: url(../images/network.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 528px;
+    display: flex; /*Habilitamos flexbox para centrar el H2*/
+    justify-content: center; /**/
+    align-items: center; /**/
+}
+
+#network h2 {
+    font-family: "Overpass Mono", monospace;
+    font-weight: 300;
+    font-size: 100px;
+}
+
+
+#network .networking {
+    display: flex;
+    align-items: center;
+}
+
+#network #network-description h3{
+    font-family: "Overpass Mono", monospace;
+    font-weight: 300;
+    font-size: 30px;
+}
+
+#network #network-description img {
+    max-width: 388px;
+    border-radius: 10px;
+}
+
+/* MEDIA */
+
+#media-test {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    padding: 0% 0% 17% 0%;
+}
+
+#media-test #media-banner {
+    display: flex; /*Habilitamos flexbox para centrar el H2*/
+    justify-content: center; /**/
+    align-items: center; /**/
+}
+
+#media-test h2 {
+    font-family: "Overpass Mono", monospace;
+    font-weight: 300;
+    font-size: 100px;
+}
+
+#media-test #media-description h3 {
+    font-family: "Overpass Mono", monospace;
+    font-weight: 300;
+    font-size: 30px;
+}
+
+#media-test #media-description img {
+    max-width: 388px;
+    border-radius: 10px;
+}
+
+
+/* Web Developer */
+
+#web-dev {
+    border: 1px solid white;
+    background-color: #000000;
+    color: white;
+}
+
+
+/* FORM */
+#contact {
+    padding: 17% 0%;
+    background-color: #000000;
+    color: rgba(255, 255, 255, 0.822);
+}
+
+#contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#left-right-menu {
+    max-width: 840px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-between;
+    margin: 0 auto; /*Ajusta margenes laterales automáticamente (sin margenes superior e inferior)*/
+}
+
+/* form section form (left side) */
+#contact-left-side{
+    max-width: 400px;
+}
+
+#contact-left-side .form-item {
+    margin-top: 10px;
+    
+}
+
+#contact-left-side input, #contact-left-side textarea {
+    width: 400px;
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.822);
+    color: white;
+    border-radius: 3px;
+}
+
+/* form section form (right side) */
+#contact-right-side {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 400px;
+}
+
+#contact-right-side #my-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100px;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#contact-right-side #my-data p {
+    text-align: left;
+}
+
+#contact #left-right-menu #contact-right-side #social-media {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 30px 0px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#contact #left-right-menu #contact-right-side #rights {
+    text-align: center;
+    padding-top: 40px;
+}
+
+/* Footer bar */
+
+footer {
+    /* background-color: white; */
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+#footer-items {
+    /* border-top: 1px solid black; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#footer-items .footer-item { /*Centra objetos en el eje y*/
+    display: flex;
+    align-items: center;
+}
+
+#footer-items #advice {
+    grid-column: 1/2;
+    justify-self: left;
+    font-family: "Overpass Mono", monospace;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#footer-items #summon-me {
+    grid-column: 2/3;
+    justify-self: right;
+    font-family: "Overpass Mono", monospace;
+    font-weight: 500;
+    font-size: 15px;
+}
