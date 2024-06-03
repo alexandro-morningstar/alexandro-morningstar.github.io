@@ -1,0 +1,1 @@
+if __name__ == '__main__': print('Nunca he sido capaz de elegir mis pasiones, así que he tenido que aceptar que ellas me eligieran a mi.')
